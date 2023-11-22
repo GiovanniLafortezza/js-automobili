@@ -64,45 +64,12 @@ automobili.forEach(function(auto) {
         automobiliRestanti.push(auto);
     }
 });
-/*
-let listAuto = "";
-automobiliBenzina.forEach(function(auto) {
-     listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`;
-let card = `
-<div class="col">
-        <div class="card">
-          <div class="card-header">
-            Le auto a ${auto.alimentazione} sono:
-          </div>
-          <ul class="list-group list-group-flush">
-          ${listAuto}
-          </ul>
-        </div>
-      </div>
-`;
-document.getElementById("card-cars").innerHTML = card;
-}); */
 
-listaTipoAuto(automobiliBenzina);
-listaTipoAuto(automobiliDiesel);
 
-let listAuto = "";
-    automobiliRestanti.forEach(function(auto) {
-        listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`;
-        let card = `
-    <div class="col">
-        <div class="card">
-          <div class="card-header">
-            Le auto restanti sono:
-          </div>
-          <ul class="list-group list-group-flush">
-          ${listAuto}
-          </ul>
-        </div>
-      </div>
-    `;
-    document.getElementById("card-cars").innerHTML += card;
-    });
+listaTipoAuto(automobiliBenzina, "card-cars-benzina");
+listaTipoAuto(automobiliDiesel, "card-cars-diesel");
+listaTipoAutoRestanti(automobiliRestanti, "card-cars-restanti");
+
 
 
 //--------------------- FUNZIONI -----------------------
@@ -131,15 +98,42 @@ function printArrayObject(arrayObject) {
     }
 }
 
-function listaTipoAuto(arrayAuto) {
+function listaTipoAuto(arrayAuto, tipo) {
+    
+    let listAuto = "";
+    let alimentazione = "";
+    arrayAuto.forEach(function(auto) {
+        listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`;
+        alimentazione = `${auto.alimentazione}`;
+    });
+        let card = `
+        <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Le auto ${alimentazione} sono:
+          </div>
+          <ul class="list-group list-group-flush">
+          ${listAuto}
+          </ul>
+        </div>
+      </div>
+        
+      
+    `;
+    document.getElementById(tipo).innerHTML = card;
+    
+}
+
+function listaTipoAutoRestanti(arrayAuto, tipo) {
     let listAuto = "";
     arrayAuto.forEach(function(auto) {
         listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`;
+    });
         let card = `
     <div class="col">
         <div class="card">
           <div class="card-header">
-            Le auto a ${auto.alimentazione} sono:
+            Le auto restanti sono: 
           </div>
           <ul class="list-group list-group-flush">
           ${listAuto}
@@ -147,8 +141,7 @@ function listaTipoAuto(arrayAuto) {
         </div>
       </div>
     `;
-    document.getElementById("card-cars").innerHTML += card;
-    });
+    document.getElementById(tipo).innerHTML = card;
 }
 
 
@@ -171,26 +164,33 @@ function addAuto(event) {
     
         if(newAuto.alimentazione == "benzina") {
             automobiliBenzina.push(newAuto);
+            nuovaMacchina(newAuto, "benzina");
         } else if(newAuto.alimentazione == "diesel") {
             automobiliDiesel.push(newAuto);
+            nuovaMacchina(newAuto, "diesel");
         } else {
             automobiliRestanti.push(newAuto);
+            nuovaMacchina(newAuto, "restanti");
         }
     
+};
+
+function nuovaMacchina(newAuto,newTipo) {
+    let listAuto = "";
+    arrayAuto.forEach(function(newAuto) {
+        listAuto += `<li class="list-group-item">${newAuto.marca} ${newAuto.modello}</li>`;
+    });
         let card = `
     <div class="col">
         <div class="card">
           <div class="card-header">
-            Le auto a ${newAuto.alimentazione} sono:
+            Le auto a  sono:
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${newAuto.marca} ${newAuto.modello}</li>
+          ${listAuto}
           </ul>
         </div>
       </div>
     `;
-    document.getElementById("card-cars").innerHTML += card;
-    
-};
-
-
+    document.getElementById(newTipo).innerHTML = card;
+}
