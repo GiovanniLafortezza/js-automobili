@@ -67,7 +67,7 @@ automobili.forEach(function(auto) {
 
 let listAuto = "";
 automobiliBenzina.forEach(function(auto) {
-     listAuto += `<li class="list-group-item">${auto}</li>`
+     listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`
 let card = `
 <div class="col">
         <div class="card">
