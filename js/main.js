@@ -86,7 +86,23 @@ document.getElementById("card-cars").innerHTML = card;
 listaTipoAuto(automobiliBenzina);
 listaTipoAuto(automobiliDiesel);
 
-
+let listAuto = "";
+    automobiliRestanti.forEach(function(auto) {
+        listAuto += `<li class="list-group-item">${auto.marca} ${auto.modello}</li>`;
+        let card = `
+    <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Le auto restanti sono:
+          </div>
+          <ul class="list-group list-group-flush">
+          ${listAuto}
+          </ul>
+        </div>
+      </div>
+    `;
+    document.getElementById("card-cars").innerHTML += card;
+    });
 
 
 //--------------------- FUNZIONI -----------------------
