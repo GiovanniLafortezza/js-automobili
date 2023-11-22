@@ -19,19 +19,33 @@
 <body>
   <div class="container">
     <div class="row" id="card-cars">
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            Le auto a Benzina
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Auto 1</li>
-            <li class="list-group-item">Auto 2</li>
-            <li class="list-group-item">Auto 3</li>
-          </ul>
-        </div>
+      
+    </div>
+
+    <div class="row m-3">
+      <div class="col-12">
+        <h3>Aggiunta auto</h3>
       </div>
     </div>
+    <form class="row g-3" data-bitwarden-watching="1" onsubmit="addAuto(event)">
+      <div class="col-md-6">
+        <label for="marca" class="form-label">marca</label>
+        <input type="text" class="form-control" id="marca">
+      </div>
+      <div class="col-md-6">
+        <label for="modello" class="form-label">modello</label>
+        <input type="text" class="form-control" id="modello">
+      </div>
+      <div class="col-12">
+        <label for="alimentazione" class="form-label">alimentazione</label>
+        <input type="text" class="form-control" id="alimentazione">
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Aggiungi Auto</button>
+      </div>
+    </form>
+  </div>
   </div>
 
   
