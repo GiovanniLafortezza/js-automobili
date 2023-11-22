@@ -54,3 +54,49 @@ let automobili = [
 let automobiliBenzina = [];
 let automobiliDiesel = [];
 let automobiliRestanti = [];
+
+automobili.forEach(function(auto) { 
+    if(auto.alimentazione == "benzina") {
+        automobiliBenzina.push(auto);
+    } else if(auto.alimentazione == "diesel") {
+        automobiliDiesel.push(auto);
+    } else {
+        automobiliRestanti.push(auto);
+    }
+});
+
+console.log(automobiliBenzina);
+console.log(automobiliDiesel);
+console.log(automobiliRestanti);
+
+printArrayObject(automobiliBenzina);
+printArrayObject(automobiliDiesel);
+printArrayObject(automobiliRestanti);
+
+
+//--------------------- FUNZIONI -----------------------
+function printObject(object) {
+    let string = "";
+
+    string += "{\n";
+
+    for (let key in object) {
+        string += "\t " + key + ": " + object[key] + "\n";
+    }
+
+    string += "}";
+
+    console.log(string);
+
+}
+
+function printArrayObject(arrayObject) {
+    console.log("Le auto a  sono:");
+    for (let i = 0; i < arrayObject.length; i++) {
+
+        let object = arrayObject[i];
+
+        console.log("Le auto n° " + (i + 1) + " è:");
+        printObject(object);
+    }
+}
