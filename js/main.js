@@ -65,15 +65,23 @@ automobili.forEach(function(auto) {
     }
 });
 
-console.log(automobiliBenzina);
-console.log(automobiliDiesel);
-console.log(automobiliRestanti);
-
-printArrayObject(automobiliBenzina);
-printArrayObject(automobiliDiesel);
-printArrayObject(automobiliRestanti);
-
-
+let listAuto = "";
+automobiliBenzina.forEach(function(auto) {
+     listAuto += `<li class="list-group-item">${auto}</li>`
+let card = `
+<div class="col">
+        <div class="card">
+          <div class="card-header">
+            Le auto a benzina sono:
+          </div>
+          <ul class="list-group list-group-flush">
+            ${listAuto}
+          </ul>
+        </div>
+      </div>
+`;
+document.getElementById("card-cars").innerHTML = card;
+});
 //--------------------- FUNZIONI -----------------------
 function printObject(object) {
     let string = "";
@@ -91,7 +99,6 @@ function printObject(object) {
 }
 
 function printArrayObject(arrayObject) {
-    console.log("Le auto a  sono:");
     for (let i = 0; i < arrayObject.length; i++) {
 
         let object = arrayObject[i];
