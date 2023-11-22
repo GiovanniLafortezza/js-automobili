@@ -161,6 +161,20 @@ function addAuto(event) {
             automobiliRestanti.push(newAuto);
         }
     
+        let card = `
+    <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Le auto a ${newAuto.alimentazione} sono:
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">${newAuto.marca} ${newAuto.modello}</li>
+          </ul>
+        </div>
+      </div>
+    `;
+    document.getElementById("card-cars").innerHTML += card;
+    
 };
 
 
